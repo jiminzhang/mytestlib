@@ -1,3 +1,6 @@
+#if !defined(__LOG_H__)
+#define __LOG_H__
+
 #include "config.h"
 
 enum LogLevel
@@ -20,4 +23,6 @@ void log_print(LogLevel level,const c8 *file,const c8 *func,const u32 line,const
 #define log_d(fmt,arg...)
 #define log_w(fmt,arg...)
 #define log_e(fmt,arg...)
+#endif
+
 #endif
