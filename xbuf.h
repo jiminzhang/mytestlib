@@ -1,33 +1,23 @@
 #if !defined(__XBUF_H__)
 #define __XBUF_H__
 #include "config.h"
-
-class XBufInter
-{
-public:
-    XBufInter(c8 *data,u32 len);
-    void incRef();
-    void decRef();
-    ~XBufInter();
-private:
-    u8 *data;
-    u32 len;
-    u32 refs;
-};
-
-class XBuf
+#include "refs.h"
+class XBuf:public XRef
 {
 public:
     XBuf();
-    XBuf(c8 *data,u32 len);
-    XBuf(const XBuf &buf);
-    ~XBuf() 
-    { 
-        if (mDataInter != NULL)
-            mDataInter.decRef();
-    }
+    void attach(c8 *d,u32 l);
+    void copyFrom(c8 *d,u32 l);
+    void free();
+
+    u32 length();
+    void append(XBuf &buf);
+    void append(c8 *data,u32 l);
+    XBuf *subBuf(u32 offset,u32 l);
+    void dump();
 private:
-    XBufInter *mDataInter;
+    c8 *_data;
+    u32 _len;
 };
 
 

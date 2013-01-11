@@ -66,7 +66,8 @@
 typedef unsigned char       u8;
 typedef signed char     s8;
 
-typedef char            c8;
+typedef char            c8;// char 
+typedef char            b8;// boolean
 
 typedef unsigned short      u16;
 typedef signed short        s16;
